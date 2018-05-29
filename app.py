@@ -19,9 +19,6 @@ SIZE = ROWS * COLS
 class State:
     def __init__(self):
         self.data = np.zeros((ROWS, COLS))
-        self.winner = None
-        self.hashVal = None
-        self.end = None
         pass
 
     # generate unique hash value
