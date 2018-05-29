@@ -1,23 +1,128 @@
+# Puzzle input index :
+# ---------------------
+# |  0 |  1 \  2 |  3 |
+# |  4 |  5 \  6 |  7 |
+# ---------------------
+# |  8 |  9 \ 10 | 11 |
+# | 12 | 13 \ 14 | 15 |
+# ---------------------
 import numpy as np 
 import pickle
 
+ROWS = 4
+COLS = 4
 
+SIZE = ROWS * COLS
 
-# Puzzle input index :
-# ---------------------
-# |  1 |  2 \  3 |  4 |
-# |  5 |  6 \  7 |  8 |
-# ---------------------
-# |  9 | 10 \ 11 | 12 |
-# | 13 | 14 \ 15 | 16 |
-# ---------------------
+# 0 represents empty position
 
-3 	  	  	4
-  	2 	  	 
-  	  	4 	 
-2 	  	  	3
+class State:
+    def __init__(self):
+        self.data = np.zeros((ROWS, COLS))
+        self.winner = None
+        self.hashVal = None
+        self.end = None
+        pass
 
-3 	1 	2 	4
-4 	2 	3 	1
-1 	3 	4 	2
-2 	4 	1 	3
+    # generate unique hash value
+    def getHash(self):
+        if self.hashVal is None:
+            self.hashVal = 0
+            for i in self.data.reshape(ROWS * COLS):
+                if i == -1:
+                    i = 2
+                self.hashVal = self.hashVal * 3 + i
+        return int(self.hashVal)
+    
+    # to determine puzzle solved or closed due to invalid state
+    def isComplete(self):
+        # base case / filled ?
+
+        # row case
+
+        # col case
+
+        # box case
+
+        pass
+
+    # print puzzle
+    def printSudoku(self):
+        for i in range(0, ROWS):
+            print('-------------')
+            out = '| '
+            for j in range(0, COLS):
+                    token = self.data[i, j]
+                out += token + ' | '
+            print(out)
+        print('-------------')        
+        pass
+    # end of class
+    pass
+
+def getAllStatesImpl(currentState, allStates):
+    for i in range(0, ROWS):
+        for j in range(0, COLS):
+            pass
+        pass
+    pass
+
+def getAllStates():
+
+    return allStates
+
+class bot:
+    
+    def __init__(self, step = 0.1, exploreRate=0.1):
+        
+        return
+    def reset(self):
+        return
+    # accept a state
+    def feedState(self,state):
+
+        return
+    # update estimation according to reward
+    def feedReward(self, reward):
+
+        return
+    # possible actions:
+    # {1,2,3,4,
+    # 1,2,3,4,
+    # 1,2,3,4
+    # 1,2,3,4}
+    def takeBlindAction(self):
+        return action
+
+    def savePolicy(self):
+        fw = open('optimal_policy_' + str(self.), 'wb')
+        pickle.dump(self.estimations, fw)
+        fw.close()
+        pass
+
+    def loadPolicy(self):
+        fr = open('optimal_policy_' + str(self.),'rb')
+        self.estimations = pickle.load(fr)
+        fr.close(
+        pass    
+
+    #  possible actions: list of remaining unfilled numbers    
+    def takeAvailableAction(self):
+        
+        pass
+    pass
+
+def train():
+    
+    pass
+
+def test():
+    
+    pass
+
+def run():
+
+    pass    
+train()
+test()
+run()   
