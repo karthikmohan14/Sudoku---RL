@@ -1,5 +1,10 @@
+import timeit
 import numpy as np
 import random as rd
+
+start_time = timeit.default_timer()
+# code you want to evaluate
+
 class Sudoku:
     def __init__(self):
         self.size = 9
@@ -26,5 +31,7 @@ class Sudoku:
             i+=3
             pass
         pass
-# lassie = Sudoku();
-# lassie.printSudoku()
+lassie = Sudoku();
+lassie.printSudoku()
+elapsed = timeit.default_timer() - start_time
+print(elapsed)
