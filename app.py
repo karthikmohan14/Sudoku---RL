@@ -8,6 +8,7 @@
 # ---------------------
 import numpy as np 
 import pickle
+import json
 
 ROWS = 4
 COLS = 4
@@ -110,11 +111,28 @@ class bot:
     pass
 
 def train():
-    
+    with open('td.json') as f:
+    test_data = json.load(f)
+    with open('tdsol.json') as f:
+    test_data_sol = json.load(f)
+    for i in range(20):
+        sdk = test_data[i]
+        sdk = np.reshape(sdk, (4, 4))
+        sdkSol = test_data_sol[i]
+        sdkSol = np.reshape(sdk, (4, 4))
     pass
 
 def test():
-    
+    with open('trd.json') as f:
+        train_data = json.load(f)
+    with open('trdsol.json') as f:
+        train_data_sol = json.load(f)
+    for i in range(20):
+        sdk = train_data[i]
+        sdk = np.reshape(sdk, (4, 4))
+        sdkSol = train_data_sol[i]
+        sdkSol = np.reshape(sdk, (4, 4))
+        pass
     pass
 
 def run():
