@@ -33,16 +33,19 @@ class State:
         return int(self.hashVal)
     
     # to determine puzzle solved or closed due to invalid state
-    def isComplete(self):
-        # base case / filled ?
-
-        # row case
-
-        # col case
-
-        # box case
-
+    def isGameOver(self):
+        for i in range(4):
+            for j in range(4):
+                # incomplete
+                if sdkState[i][j] == 0:
+                    return False
+                # row case # col case # box case
+                if sdkState[i][j] != sdkSol[index][i][j]:
+                    return True
+            pass
         pass
+        # fully correctly filled
+        return True
 
     # print puzzle
     def printSudoku(self):
@@ -111,18 +114,6 @@ class bot:
     pass
 
 def train():
-    with open('td.json') as f:
-    test_data = json.load(f)
-    with open('tdsol.json') as f:
-    test_data_sol = json.load(f)
-    for i in range(20):
-        sdk = test_data[i]
-        sdk = np.reshape(sdk, (4, 4))
-        sdkSol = test_data_sol[i]
-        sdkSol = np.reshape(sdk, (4, 4))
-    pass
-
-def test():
     with open('trd.json') as f:
         train_data = json.load(f)
     with open('trdsol.json') as f:
@@ -134,6 +125,19 @@ def test():
         sdkSol = np.reshape(sdk, (4, 4))
         pass
     pass
+
+def test():
+    with open('td.json') as f:
+    test_data = json.load(f)
+    with open('tdsol.json') as f:
+    test_data_sol = json.load(f)
+    for i in range(20):
+        sdk = test_data[i]
+        sdk = np.reshape(sdk, (4, 4))
+        sdkSol = test_data_sol[i]
+        sdkSol = np.reshape(sdk, (4, 4))
+    pass
+
 
 def run():
 
