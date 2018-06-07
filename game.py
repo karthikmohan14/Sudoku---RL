@@ -31,11 +31,36 @@ class environ:
             self.action_space, (self.action_space/2))
         pass
 
-    def step(self):
-        # base case : no steps to be taken if all 0s are filled
+    def spot_select(self):
+        indices = [index for index in range(
+            len(self.sudoku)) if self.sudoku[index] == 0]
+        r = random.randint(0, len(indices)-1)
+        return indices[r]
 
+    def step(self):
+        # base case : no steps to be taken if all 0s are filled , maximum reward
+        if self.sudoku.count(0) == 0:
+            reward = 10
+            truth = True
+            state_prime = self.sudoku
+            pass
+        else:
+            spot = self.spot_select()
+            # pick an empty spot and fill with any of the numbers from 1,2,3,4
+            num = random.randint(1, 4)
+            state_prime = self.sudoku
+            state_prime[spot] = num
+            if state_prime[spot] == self.train_data_sol[self.key][spot]:
+                # positive reward
+                reward = 1
+                pass
+            else:
+                # negative reward
+                reward = -1
+                truth = False
+                pass
         return state_prime, reward, truth
-        pass
+    # end of class definition
     pass
 
 
